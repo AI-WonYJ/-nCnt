@@ -4,10 +4,10 @@ import cv2
 
 
 
-time.sleep(0.1)
-hog = cv2.HOGDescriptor()
-hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
-cap = cv2.VideoCapture(0)
+time.sleep(0.1)     # Delay
+hog = cv2.HOGDescriptor()     # default 디덱터를 위한 hog 객체 생성
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())     # hog 객체 설정
+cap = cv2.VideoCapture(0)     # 첫번째 카메라를 VideoCapture 타입의 객체로 가져온다.
 
 while True:
      ret, frame = cap.read()
@@ -28,5 +28,5 @@ while True:
      img = cv2.resize(frame1,(640,480))
      cv2.imshow("Frame", frame1);
      key = cv2.waitKey(1) & 0xFF
-     if key == ord("q"):
+     if key == ord("q"):     # q 누르면 중지
         break
