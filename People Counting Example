@@ -11,13 +11,13 @@ cap = cv2.VideoCapture(0)     # 첫번째 카메라를 VideoCapture 타입의 �
 
 while True:
      ret, frame = cap.read()     # 영상 읽어오기
-     flipped = cv2.flip(frame, flipCode = -1)
-     frame1 = cv2.resize(flipped, (640, 480))
-     font = cv2.FONT_HERSHEY_SIMPLEX
+     flipped = cv2.flip(frame, flipCode = 1)     # 영상 반전 설정, 0으로 하면 상하 반전
+     frame1 = cv2.resize(flipped, (640, 480))     # 이미지 크기를 조절
+     font = cv2.FONT_HERSHEY_SIMPLEX     # font 설정
 
      gray = cv2.cvtColor(frame1, cv2.COLOR_BGR2GRAY)     # 영상을 Gray로 
-     boxes, weights = hog.detectMultiScale(frame1, winStride=(8,8) )
-     boxes = np.array([[x, y, x + w, y + h] for (x, y, w, h) in boxes])
+     boxes, weights = hog.detectMultiScale(frame1, winStride=(8,8) )     # 사각형 정보를 받아온다
+     boxes = np.array([[x, y, x + w, y + h] for (x, y, w, h) in boxes])     # 박스 크기 
     
      for (xA, yA, xB, yB) in boxes:
         # display the detected boxes in the colour picture
