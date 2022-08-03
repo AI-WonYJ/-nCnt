@@ -10,12 +10,12 @@ hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())     # hog 객�
 cap = cv2.VideoCapture(0)     # 첫번째 카메라를 VideoCapture 타입의 객체로 가져온다.
 
 while True:
-     ret, frame = cap.read()
+     ret, frame = cap.read()     # 영상 읽어오기
      flipped = cv2.flip(frame, flipCode = -1)
      frame1 = cv2.resize(flipped, (640, 480))
      font = cv2.FONT_HERSHEY_SIMPLEX
 
-     gray = cv2.cvtColor(frame1, cv2.COLOR_BGR2GRAY)
+     gray = cv2.cvtColor(frame1, cv2.COLOR_BGR2GRAY)     # 영상을 Gray로 
      boxes, weights = hog.detectMultiScale(frame1, winStride=(8,8) )
      boxes = np.array([[x, y, x + w, y + h] for (x, y, w, h) in boxes])
     
@@ -26,7 +26,7 @@ while True:
         b=len(boxes)
         cv2.putText(frame1,"peoplecount:"+str(b),(20,50),0,2,(255,0,0),3)
      img = cv2.resize(frame1,(640,480))
-     cv2.imshow("Frame", frame1);
+     cv2.imshow("Frame", frame1)     # Gray 영상을 Window에 표시
      key = cv2.waitKey(1) & 0xFF
-     if key == ord("q"):     # q 누르면 중지
+     if key == ord("q"):     # q 누르면 Window 중지
         break
