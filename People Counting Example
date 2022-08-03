@@ -17,14 +17,13 @@ while True:
 
      gray = cv2.cvtColor(frame1, cv2.COLOR_BGR2GRAY)     # 영상을 Gray로 
      boxes, weights = hog.detectMultiScale(frame1, winStride=(8,8) )     # 사각형 정보를 받아온다
-     boxes = np.array([[x, y, x + w, y + h] for (x, y, w, h) in boxes])     # 박스 크기 
+     boxes = np.array([[x, y, x + w, y + h] for (x, y, w, h) in boxes])     # 상자 크기 
     
-     for (xA, yA, xB, yB) in boxes:
-        # display the detected boxes in the colour picture
+     for (xA, yA, xB, yB) in boxes:     # 영상에서 감지된 상자 표시
         cv2.rectangle(frame1, (xA, yA), (xB, yB),(0, 255, 0), 2)
+        b=len(boxes)     # 상자 수 카운트
+        cv2.putText(frame1,"peoplecount:"+str(b),(20,50),0,2,(255,0,0),3)     # 사람 수 = 상자 수
         
-        b=len(boxes)
-        cv2.putText(frame1,"peoplecount:"+str(b),(20,50),0,2,(255,0,0),3)
      img = cv2.resize(frame1,(640,480))
      cv2.imshow("Frame", frame1)     # Gray 영상을 Window에 표시
      key = cv2.waitKey(1) & 0xFF
