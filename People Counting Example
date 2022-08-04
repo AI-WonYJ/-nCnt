@@ -29,3 +29,6 @@ while True:
      key = cv2.waitKey(1) & 0xFF
      if key == ord("q"):     # q 누르면 Window 중지
         break
+        
+        
+        # 어떻게 정확도와 인식률을 높일 지 고민
