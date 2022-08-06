@@ -1,5 +1,3 @@
-# https://hanryang1125.tistory.com/9
-
 import cv2
 import numpy as np
 
