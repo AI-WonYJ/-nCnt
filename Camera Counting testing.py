@@ -11,6 +11,8 @@ pos_linha=300 # 카운트 라인 위치
 
 delay= 60 # 비디오 fps
 
+line_d = 20
+
 detec = []
 carros= 0
 
@@ -38,7 +40,7 @@ while True:
     dilatada = cv2.morphologyEx (dilatada, cv2. MORPH_CLOSE , kernel)
     contorno, h = cv2.findContours(dilatada,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE) # 외곽선 검출 함수, (입력 영상, 외곽선 검출 모드, 외곽선 근사화 방법, 검출된 외곽선 좌표, 외곽선 계층 정보, 좌표 값 이동 옵셋)
     
-    cv2.line(frame1, (0, pos_linha), (1200, pos_linha), (255,127,0), 3)  # 카운트 라인 그리기 (이미지 파일, 시작점 좌표 (x, y), 종료점 좌표 (x, y), 색상 (blue, green, red), 선 두께, 선 종류, fractional bit)
+    cv2.line(frame1, (0, pos_linha), (1200, pos_linha), (255,127,0), line_d)  # 카운트 라인 그리기 (이미지 파일, 시작점 좌표 (x, y), 종료점 좌표 (x, y), 색상 (blue, green, red), 선 두께, 선 종류, fractional bit)
     for(i,c) in enumerate(contorno): # 카운트 라인에 닿았을 때
         (x,y,w,h) = cv2.boundingRect(c) # 주어진 점을 감싸는 최소 크기 사각형(바운딩 박스)를 반환한다.
         validar_contorno = (w >= largura_min) and (h >= altura_min) # 직사각형 최소 높이, 너비와 비교
@@ -53,7 +55,7 @@ while True:
         for (x,y) in detec:
             if y<(pos_linha+offset) and y>(pos_linha-offset): # 카운트 라인 안에 들어올 때
                 carros+=1 # 카운트 값 증가
-                cv2.line(frame1, (0, pos_linha), (1200, pos_linha), (0,127,255), 3) # 선 색상 변경
+                cv2.line(frame1, (0, pos_linha), (1200, pos_linha), (0,127,255), line_d) # 선 색상 변경
                 detec.remove((x,y)) # 초기화
                 print("car is detected : "+str(carros)) # 카운트 출력
        
