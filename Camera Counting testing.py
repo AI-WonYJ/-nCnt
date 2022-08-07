@@ -59,7 +59,7 @@ while True:
                 detec.remove((x,y)) # 초기화
                 print("car is detected : "+str(carros)) # 카운트 출력
        
-    cv2.putText(frame1, "VEHICLE COUNT : "+str(carros), (0, 70), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255),3) # 텍스트 출력, (이미지 파일, 출력 문자, 출력 문자 시작 위치 좌표 (좌측 하단), fontFace,  폰트 크기, 폰트 색상, 폰트 두께, 선 종류, org 사용 옵션 (True: 좌측 하단, False: 좌측 상단))
+    cv2.putText(frame1, "Person Count : "+str(carros), (0, 70), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255),3) # 텍스트 출력, (이미지 파일, 출력 문자, 출력 문자 시작 위치 좌표 (좌측 하단), fontFace,  폰트 크기, 폰트 색상, 폰트 두께, 선 종류, org 사용 옵션 (True: 좌측 하단, False: 좌측 상단))
     cv2.imshow("Video Original" , frame1) # 카메라 영상 출력
     cv2.imshow("Detectar",dilatada) # 회색 카메라 영상 출력
 
