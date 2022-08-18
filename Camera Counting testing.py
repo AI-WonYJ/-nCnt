@@ -67,9 +67,9 @@ while True:
     cv2.imshow("Video Original" , frame1) # 카메라 영상 출력
     cv2.imshow("Detectar",dilatada) # 회색 카메라 영상 출력
 
-    if cv2.waitKey(33) == ord('a'): # a 누르면 카운트 초기화
+    if cv2.waitKey(33) == ord('a'):
       carros = 0
-    if cv2.waitKey(1) == 27: # esc 누르면 프로그램 종료
+    if cv2.waitKey(1) == 27:
         break
     
 cv2.destroyAllWindows()
