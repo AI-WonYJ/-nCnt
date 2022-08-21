@@ -4,11 +4,21 @@ h1 {
     color:#fff;
   }
 
-  form {
+form {
     width: 300px;
     border:1px solid #222;
     background-color: #d3d3d3;
     padding:15px;
     margin:0 auto;
     text-align: left;
+}
+
+a {
+  color: white;
+  text-decoration-line: none;
+}
+
+a:hover {
+  color: red;
+  text-decoration: underline;
 }
