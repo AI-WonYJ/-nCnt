@@ -1,0 +1,54 @@
+# OpenCV 라즈베리 파이 실습2
+https://velog.io/@namung/Open-CV
+
+#[OpenCV] 그림 좌우 및 상하 반전시키기 (flip, 파이썬)
+https://crmn.tistory.com/54
+
+# [Facial Recognition] 단체사진에서 인원수 알아내기
+https://romeoh.tistory.com/entry/Facial-Recognition-%EB%8B%A8%EC%B2%B4%EC%82%AC%EC%A7%84%EC%97%90%EC%84%9C-%EC%9D%B8%EC%9B%90%EC%88%98-%EC%95%8C%EC%95%84%EB%82%B4%EA%B8%B0
+
+
+# OpenCV, YOLO를 이용하여 이미지 속 객체 인식 (Python)
+https://hanryang1125.tistory.com/9
+
+# Development
+https://morioh.com/p/ab58ef8d8a6e
+
+# OpenCV 및 Python을 사용한 차량 감지 및 카운팅
+https://ko.quish.tv/vehicle-detection-counting-using-opencv
+
+# OpenCV - 3. 이미지 및 동영상 읽기
+https://bkshin.tistory.com/entry/OpenCV-3-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%9E%85%EC%B6%9C%EB%A0%A5
+
+# OpenCV - 이미지/비디오 읽기
+https://zzsza.github.io/data/2018/01/23/opencv-1/
+
+# [Python-OpenCV] Erosion 과 Dilation
+https://nicewoong.github.io/development/2018/01/05/erosion-and-dilation/
+
+# Python OpenCV 강좌 : 제 26강 - 모폴로지 변환
+https://076923.github.io/posts/Python-opencv-26/
+
+# [파이썬 OpenCV] 다양한 외곽선 관련 함수 - cv2.arcLength, cv2.contourArea, cv2.approxPolyDP
+https://deep-learning-study.tistory.com/232
+
+# [OpenCV & Yolo] 이미지에 있는 객체 인식
+https://greencloud.tistory.com/82
+
+# YOLO 사물인식 (Python, OpenCV)
+https://thomapple.tistory.com/entry/YOLO-%EC%82%AC%EB%AC%BC%EC%9D%B8%EC%8B%9D-python
+
+# [YOLO] 윈도우 버전 YOLOv3 설치 Guideline
+https://ultrakid.tistory.com/25
+
+# 라즈베리파이기반 YOLO 사물인식 로봇
+https://github.com/leehaesung/YOLO-Powered_Robot_Vision/blob/master/README_Korean.md
+
+# 3. (YOLO) 라즈베리파이3에 YOLO 설치
+https://j-remind.tistory.com/53
+
+# YOLO and Tiny-YOLO object detection on the Raspberry Pi and Movidius NCS
+https://pyimagesearch.com/2020/01/27/yolo-and-tiny-yolo-object-detection-on-the-raspberry-pi-and-movidius-ncs/
+
+# [파이썬/업무자동화] 엑셀에 입력 된 파일명 따라 이미지 삽입하기 - openpyxl
+https://ybworld.tistory.com/126
