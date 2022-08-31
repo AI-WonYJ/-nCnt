@@ -22,30 +22,39 @@ body_cascade = cv2.CascadeClassifier('haarcascade_fullbody.xml')
 # 10 = 검출한 사각형 사이 최소 간격, body에 x,y,w,h가 여러개 저장됨.
 body = body_cascade.detectMultiScale(grayImage1, 1.01, 10, minSize=(30, 30))
 
+P_cnt1 = 0
 for (x,y,w,h) in body :         
     cv2.rectangle(image1,(x,y),(x+w,y+h),(0,0,255),3)
+    P_cnt1 += 1
 
 plt.subplot(1, 3, 1)
 plt.imshow(image1, cmap='gray')
+print("1번 검출:", P_cnt1)
 
 
 # 2 = 검출한 사각형 사이 최소 간격, minSize = 지정한 크기 이상의 사각형만 가져온다.
 body = body_cascade.detectMultiScale(grayImage2,1.01, 2, 0, minSize=(70, 70))
 
+P_cnt2 = 0
 for (x,y,w,h) in body :        
     cv2.rectangle(image2,(x,y),(x+w,y+h),(0,0,255),3)
+    P_cnt2 += 1
 
 plt.subplot(1, 3, 2)
 plt.imshow(image2, cmap='gray')
+print("2번 검출:", P_cnt2)
 
 
 # minSize가 없을 때의 결과
 body = body_cascade.detectMultiScale(grayImage3, 1.01, 2)
+
+P_cnt3 = 0
 for (x,y,w,h) in body : 
     cv2.rectangle(image3,(x,y),(x+w,y+h),(0,0,255),3)
+    P_cnt3 += 1
 
 plt.subplot(1, 3, 3)
 plt.imshow(image3, cmap='gray')
-
+print("3번 검출:", P_cnt3)
 
 plt.show()
