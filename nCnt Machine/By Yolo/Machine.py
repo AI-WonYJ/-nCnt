@@ -61,6 +61,8 @@ def yolo(frame, size, score_threshold, nms_threshold):
         print(index, end=' ')
     print("\n\n============================== classes ==============================")
 
+    global ncnt_people
+
     for i in range(len(boxes)):
         if i in indexes:
             x, y, w, h = boxes[i]
@@ -75,6 +77,8 @@ def yolo(frame, size, score_threshold, nms_threshold):
             
             # 탐지된 객체의 정보 출력
             print(f"[{class_name}({i})] conf: {confidences[i]} / x: {x} / y: {y} / width: {w} / height: {h}")
+            if class_name == "person":
+                ncnt_people += 1
 
     return frame
 
@@ -101,7 +105,12 @@ frame = cv2.imread(office)
 # 입력 사이즈 리스트 (Yolo 에서 사용되는 네크워크 입력 이미지 사이즈)
 size_list = [320, 416, 608]
 
+ncnt_people = 0
+
 frame = yolo(frame=frame, size=size_list[2], score_threshold=0.4, nms_threshold=0.4)
 cv2.imshow("Output_Yolo", frame)
+
+print("\n\n사람 수: {0}명".format(ncnt_people))
+
 cv2.waitKey(0)
 cv2.destroyAllWindows()
