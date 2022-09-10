@@ -1,5 +1,7 @@
 import cv2
 import numpy as np
+from datetime import datetime
+import time
 
 def yolo(frame, size, score_threshold, nms_threshold):
     # YOLO 네트워크 불러오기
@@ -81,6 +83,10 @@ def yolo(frame, size, score_threshold, nms_threshold):
 
     return frame
 
+
+
+
+
 # 클래스 리스트
 classes = ["person", "bicycle", "car", "motorcycle",
            "airplane", "bus", "train", "truck", "boat", "traffic light", "fire hydrant",
@@ -95,21 +101,41 @@ classes = ["person", "bicycle", "car", "motorcycle",
            "cell phone", "microwave", "oven", "toaster", "sink", "refrigerator",
            "book", "clock", "vase", "scissors", "teddy bear", "hair drier", "toothbrush"]
 
-# 이미지 경로
-office = "1.jpg"
+while True:
+    # 웹캠으로 사진 찍기
+    cap = cv2.VideoCapture(0)
+    if cap.isOpened():
+        while True:
+            ret, frame = cap.read()
+            if ret:
+                cv2.imshow('camera', frame)
+                if cv2.waitKey(1) != -1:
+                    cv2.imwrite(datetime.now() + 'photo.jpg',frame)
+                    break
+            else:
+                print('no frame')
+                break
+    else:
+        print('no camera!')
 
-# 이미지 읽어오기
-frame = cv2.imread(office)
+    cap.release()
 
-# 입력 사이즈 리스트 (Yolo 에서 사용되는 네크워크 입력 이미지 사이즈)
-size_list = [320, 416, 608]
+    # 이미지 경로
+    img = "photo.jpg"
 
-ncnt_people = 0
+    # 이미지 읽어오기
+    frame = cv2.imread(img)
 
-frame = yolo(frame=frame, size=size_list[2], score_threshold=0.4, nms_threshold=0.4)
-cv2.imshow("Output_Yolo", frame)
+    # 입력 사이즈 리스트 (Yolo 에서 사용되는 네크워크 입력 이미지 사이즈)
+    size_list = [320, 416, 608]
 
-print("\n\n사람 수: {0}명".format(ncnt_people))
+    ncnt_people = 0
 
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+    frame = yolo(frame=frame, size=size_list[2], score_threshold=0.4, nms_threshold=0.4)
+    cv2.imshow("Output_Yolo", frame)
+
+    print("\n\n사람 수: {0}명".format(ncnt_people))
+
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    time.sleep(5)
