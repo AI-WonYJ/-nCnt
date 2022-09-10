@@ -137,6 +137,6 @@ while True:
 
     print("\n\n사람 수: {0}명".format(ncnt_people))
 
-    # cv2.waitKey(0)
+    cv2.waitKey(3000) #ms
     cv2.destroyAllWindows()
     time.sleep(1)
