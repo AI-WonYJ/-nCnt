@@ -3,7 +3,7 @@ import numpy as np
 
 def yolo(frame, size, score_threshold, nms_threshold):
     # YOLO 네트워크 불러오기
-    net = cv2.dnn.readNet("By Yolo\yolov3.weights", "By Yolo\yolov3.cfg")
+    net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")
     layer_names = net.getLayerNames()
     output_layers = [layer_names[i - 1] for i in net.getUnconnectedOutLayers()]
 
@@ -69,15 +69,14 @@ def yolo(frame, size, score_threshold, nms_threshold):
             class_name = classes[class_ids[i]]
             label = f"{class_name} {confidences[i]:.2f}"
             color = colors[class_ids[i]]
-
-            # 사각형 테두리 그리기 및 텍스트 쓰기
-            cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
-            cv2.rectangle(frame, (x - 1, y), (x + len(class_name) * 13 + 65, y - 25), color, -1)
-            cv2.putText(frame, label, (x, y - 8), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 0, 0), 2)
             
             # 탐지된 객체의 정보 출력
             print(f"[{class_name}({i})] conf: {confidences[i]} / x: {x} / y: {y} / width: {w} / height: {h}")
             if class_name == "person":
+                # 사각형 테두리 그리기 및 텍스트 쓰기
+                cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
+                cv2.rectangle(frame, (x - 1, y), (x + len(class_name) * 13 + 65, y - 25), color, -1)
+                cv2.putText(frame, label, (x, y - 8), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 0, 0), 2)
                 ncnt_people += 1
 
     return frame
@@ -97,7 +96,7 @@ classes = ["person", "bicycle", "car", "motorcycle",
            "book", "clock", "vase", "scissors", "teddy bear", "hair drier", "toothbrush"]
 
 # 이미지 경로
-office = "C:\\Users\\user\\Desktop\\SSCC_nCnt-main\\nCnt Machine\\By Yolo\\1.jpg"
+office = "1.jpg"
 
 # 이미지 읽어오기
 frame = cv2.imread(office)
