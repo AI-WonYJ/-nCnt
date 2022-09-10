@@ -109,8 +109,9 @@ while True:
             ret, frame = cap.read()
             if ret:
                 cv2.imshow('camera', frame)
-                if cv2.waitKey(1) != -1:
-                    cv2.imwrite(datetime.now() + 'photo.jpg',frame)
+                if cv2.waitKey(1) == -1:
+                    time.sleep(1)
+                    cv2.imwrite('photo.jpg',frame)
                     break
             else:
                 print('no frame')
@@ -136,6 +137,6 @@ while True:
 
     print("\n\n사람 수: {0}명".format(ncnt_people))
 
-    cv2.waitKey(0)
+    # cv2.waitKey(0)
     cv2.destroyAllWindows()
-    time.sleep(5)
+    time.sleep(1)
