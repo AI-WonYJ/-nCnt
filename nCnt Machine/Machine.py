@@ -1,3 +1,4 @@
+from flask import Flask
 import cv2
 import numpy as np
 from datetime import datetime
@@ -140,3 +141,10 @@ while True:
     cv2.waitKey(3000) #ms
     cv2.destroyAllWindows()
     time.sleep(1)
+
+    app = Flask(__name__)
+    @app.route('/')
+    def home():
+        return str(ncnt_people)
+    if __name__ == '__main__':
+        app.run(debug=True)
