@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>상품 소개 페이지</title>
+  <style>
+      h1 {      
+      padding:10px;
+      background-color:#000;
+      color:#fff;
+    }
+
+  form {
+      margin:0 auto;
+  }
+
+  a {
+    color: white;
+    text-decoration-line: none;
+    text-decoration: none;
+  }
+
+  button {
+      margin: 20px;
+      width: 15%;
+  }
+
+  .w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+  }
+
+  .w-btn-outline {
+    position: relative;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+  }
+
+  .w-btn-indigo {
+    background-color: skyblue;
+    color: white;
+  }
+
+  .w-btn-indigo-outline {
+    border: 3px solid skyblue;
+    color: white;
+  }
+
+  .w-btn-indigo-outline:hover {
+    color: skyblue;
+    background: white;
+  }
+  </style>
+</head>
+<body>
+  <h1><img src="{{ url_for('static' , filename='image/SSCC_logo.png')}}" alt="sscc Logo Image" class="header-image">  <a href="https://saint.ssu.ac.kr/irj/portal" target="_blank" rel="noopener noreferrer" style="font-size: 32px; text-decoration: none; color: white;">SSCC</a></h1>
+  <div style="text-align:center;">
+    <br><br>
+    <img src="{{ url_for('static' , filename='image/kakao_lion.png')}}" alt="main Image" class="main-image" width="560px" height="640px"><br><br><br>
+    <form action="/" method="get">
+      <div style="width: 30%; border:1px solid #222; background-color: #d3d3d3; padding:15px; margin:0 auto; text-align: left;">동아리 인원 수 출력  {{counting}} 현재시간 : {{time}}</div>
+      <button class="w-btn w-btn-indigo" type="submit" style="width: 20%;">
+        확인하기 
+      </button>
+    </form>
+  </div>
+</body>
+</html>
