@@ -140,7 +140,6 @@ while True:
 
     cv2.waitKey(3) #ms
     cv2.destroyAllWindows()
-    time.sleep(600) # 10
 
     app = Flask(__name__)
     @app.route('/')
@@ -148,3 +147,5 @@ while True:
         return str(ncnt_people)
     if __name__ == '__main__':
         app.run(debug=True)
+        
+    time.sleep(600) # 10 min
