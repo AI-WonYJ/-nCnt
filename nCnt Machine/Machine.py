@@ -1,8 +1,10 @@
-from flask import Flask
+# -*- coding: utf-8 -*-
+from flask import Flask, render_template
 import cv2
 import numpy as np
 from datetime import datetime
 import time
+import random
 
 def yolo(frame, size, score_threshold, nms_threshold):
     # YOLO 네트워크 불러오기
@@ -102,7 +104,8 @@ classes = ["person", "bicycle", "car", "motorcycle",
            "cell phone", "microwave", "oven", "toaster", "sink", "refrigerator",
            "book", "clock", "vase", "scissors", "teddy bear", "hair drier", "toothbrush"]
 
-while True:
+
+def machine():
     # 웹캠으로 사진 찍기
     cap = cv2.VideoCapture(0)
     if cap.isOpened():
@@ -131,6 +134,7 @@ while True:
     # 입력 사이즈 리스트 (Yolo 에서 사용되는 네크워크 입력 이미지 사이즈)
     size_list = [320, 416, 608]
 
+    global ncnt_people
     ncnt_people = 0
 
     frame = yolo(frame=frame, size=size_list[2], score_threshold=0.4, nms_threshold=0.4)
@@ -141,11 +145,15 @@ while True:
     cv2.waitKey(3) #ms
     cv2.destroyAllWindows()
 
-    app = Flask(__name__)
-    @app.route('/')
-    def home():
-        return str(ncnt_people)
-    if __name__ == '__main__':
-        app.run(debug=True)
-        
-    time.sleep(600) # 10 min
+# 여기부터 플래스크 백엔드 
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    machine()
+    current_time = datetime.now()
+    return render_template('index.html', counting = ncnt_people, time = current_time)
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run()
