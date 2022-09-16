@@ -152,6 +152,7 @@ app = Flask(__name__)
 def hello_world():
     machine()
     current_time = datetime.now()
+    current_time = str(current_time)[0:19]
     return render_template('index.html', counting = ncnt_people, time = current_time)
 
 if __name__ == '__main__':
